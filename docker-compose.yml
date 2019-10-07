@@ -1,0 +1,23 @@
+version: "2"
+
+services:
+ #JupyterLab environment
+ jupyter:
+   image: jupyter/datascience-notebook:65761486d5d3
+
+   command: start.sh jupyter lab
+
+   ports:
+    - 8888:8888
+
+   working_dir: /home/jovyan/work
+
+   volumes:
+    - .:/home/jovyan/work
+
+   #To change user's info, start up root user.
+   user: "1000"
+
+   #Match id between container user and host user.
+   group_add:
+   - users
