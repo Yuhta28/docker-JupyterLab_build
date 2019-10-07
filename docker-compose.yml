@@ -3,21 +3,25 @@ version: "2"
 services:
  #JupyterLab environment
  jupyter:
-   image: jupyter/datascience-notebook:65761486d5d3
+   build: .
 
+   #password 'secret'
    command: >-
      start.sh jupyter lab
      --NotebookApp.password=sha1:98c779b2d38f:2363d791fe454fbc85aac976d4d6f24ec87dde88
 
    ports:
-    - 8888:8888
+     - 8888:8888
+
+   #Increase share memory
+   shm_size: 4G
 
    working_dir: /home/jovyan/work
 
    volumes:
     - .:/home/jovyan/work
 
-   #To change user's info, start up root user.
+   #Match UID to login user of host environment
    user: "1000"
 
    #Match id between container user and host user.
