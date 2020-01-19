@@ -5,25 +5,24 @@ services:
  jupyter:
    build: .
 
-   #password 'secret'
+   #password is 'secret'
    command: >-
      start.sh jupyter lab
-     --NotebookApp.password=sha1:98c779b2d38f:2363d791fe454fbc85aac976d4d6f24ec87dde88
+     --NotebookApp.password=sha1:75c0514df417:e2b9f720d14cb9fd160b283a3d841d6f1de47115
 
    ports:
      - 8888:8888
 
-   #Increase share memory
+   #Increase share memory size for DataLoader
    shm_size: 4G
 
    working_dir: /home/jovyan/work
 
    volumes:
-    - .:/home/jovyan/work
+     - .:/home/jovyan/work
 
-   #Match UID to login user of host environment
-   user: "1000"
+   #match UID for login-user of host environment
+   user: "1001"
 
-   #Match id between container user and host user.
    group_add:
-   - users
+     - users

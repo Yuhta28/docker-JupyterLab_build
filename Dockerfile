@@ -1,5 +1,6 @@
-FROM jupyter/datascience-notebook:65761486d5d3
+FROM jupyter/datascience-notebook:latest
 
-RUN conda install -y pytorch-cpu=1.0.1 torchvision-cpu=0.2.2 -c pytorch
+#Install package about PyTorch
+RUN conda install -y pytorch torchvision cpuonly -c pytorch
 
 RUN pip install torchsummary==1.5.1
